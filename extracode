@@ -34,3 +34,31 @@ class string{
     }
     
 }
+
+if (keyCode === 49){
+    song.play();
+  }
+  
+  if (keyCode === 50){
+     song2.play();
+  }
+
+  if (keyCode === 51){
+    song3.play();
+  }
+
+  if (keyCode === 52){
+    song4.play();
+  }
+
+  if (keyCode === 53){
+     song5.play();
+  }
+
+  if (keyCode === 54){
+    song6.play();
+  }
+
+  if (keyCode === 55){
+    song1.play();
+  }

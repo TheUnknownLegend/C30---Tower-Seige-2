@@ -12,6 +12,10 @@ var greyImg = "grey.jpg";
 
 var strings;
 var stones;
+var score = 0;
+
+var launch;
+var song,song1,song2,song3,song4,song5,song6;
 
 var stackA1 = [];
 var stackA2 = [];
@@ -31,7 +35,17 @@ var backgroundImg;
 
 function preload()
 {
-	backgroundImg = loadImage("First_Order.png")
+  backgroundImg = loadImage("First_Order.png");
+  
+  song = loadSound("Music/Imperial_March.mp3")
+  song1 = loadSound("Music/Cyberpunk.mp3")
+  song2 = loadSound("Music/ping.mp3")
+  song3 = loadSound("Music/Gta San Andreas.mp3")
+  song4 = loadSound("Music/My Life Be Like.mp3")
+  song5 = loadSound("Music/T__g Life.mp3")
+  song6 = loadSound("Music/Tokio Drift.mp3")
+
+  launch = loadSound("shooting.mp3");
 }
 
 function setup() {
@@ -82,8 +96,6 @@ function setup() {
   strings = new Rope(stones.body,{x:150,y:500})
 
   Engine.run(engine);
-
-  Engine.update(engine);
   
 }
 
@@ -98,42 +110,57 @@ function draw() {
 
   for(var i=0; i<stackA1.length;i++){
     stackA1[i].display();
+    stackA1[i].score();
   }
 
   for(var i=0; i<stackA2.length;i++){
     stackA2[i].display();
+    stackA2[i].score();
+
   }
 
   for(var i=0; i<stackA3.length;i++){
     stackA3[i].display();
+    stackA3[i].score();
   }
 
   for(var i=0; i<stackA4.length;i++){
     stackA4[i].display();
+    stackA4[i].score();
   }
 
   platform2.display();
   for(var i=0; i<stackB1.length;i++){
     stackB1[i].display();
+    stackB1[i].score();
   }
 
   for(var i=0; i<stackB2.length;i++){
     stackB2[i].display();
+    stackB2[i].score();
   }
 
   for(var i=0; i<stackB3.length;i++){
     stackB3[i].display();
+    stackB3[i].score();
   }
 
   for(var i=0; i<stackB4.length;i++){
     stackB4[i].display();
+    stackB4[i].score();
   }
+
+  songs();
 
   stones.display();
 
   textSize(22);
   fill("yellow");
   text(mouseX + ", " + mouseY , mouseX,mouseY);
+
+  textSize(32);
+  fill("Orange");
+  text("Score : " + score, 50 ,50)
 
 }
 
@@ -151,6 +178,8 @@ function mouseDragged(){
 function mouseReleased(){
   strings.fly();
   gameState = "launched";
+
+  launch.play();
 }
 
 function keyPressed(){
@@ -162,4 +191,36 @@ function keyPressed(){
 
      gameState = "onSling";
   }
+  
+}
+
+function songs(){
+  if (keyCode === 49){
+    song.play();
+  }
+  
+  if (keyCode === 50){
+     song2.play();
+  }
+
+  if (keyCode === 51){
+    song3.play();
+  }
+
+  if (keyCode === 52){
+    song4.play();
+  }
+
+  if (keyCode === 53){
+     song5.play();
+  }
+
+  if (keyCode === 54){
+    song6.play();
+  }
+
+  if (keyCode === 55){
+    song1.play();
+  }
+
 }
